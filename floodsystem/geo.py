@@ -43,7 +43,34 @@ def stations_within_radius(stations : MonitoringStation, centre : tuple, r : flo
     
     return stations_radius
 
+def rivers_with_station(stations : MonitoringStation) -> set:
 
+    """
+    For a given list of station objects, returns a set of rivers 
+    associated with the monitoring station.
+ 
+    """
+
+    stations_rivers = { station.river for station  in stations }
+    return stations_rivers
+
+def stations_by_river(stations : MonitoringStation ) -> dict:
+
+    """
+        For a given list of station objects, returns a dictionary with key:
+        value pairs as river names and list of station object associated with the river.
+
+    """
+
+    dictionary = {}
+
+    for station in stations:
+        list_of_stations = dictionary.setdefault(station.river, [])
+        dictionary[station.river] = list_of_stations.append(station)
+    
+    return dictionary
+
+    
 
 def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
 
@@ -66,3 +93,4 @@ def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
         i += 1
     
     return stations_list[ : i + 1 ] 
+

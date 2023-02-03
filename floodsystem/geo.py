@@ -44,3 +44,25 @@ def stations_within_radius(stations : MonitoringStation, centre : tuple, r : flo
     return stations_radius
 
 
+
+def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
+
+    """
+    Given a list of stations and integer N, it should return a list of N (river. no. of station pairs ) tuples
+    with the maximum number of stations. In case of more rivers with the same number of stations as the nth entry,
+    the rivers are included as well in the list.
+       
+    """
+    # can try default dict
+    stations_dict = {}
+
+    for station in stations:
+        stations_dict[station.river] = stations_dict.setdefault(station.river, 0) + 1 
+
+    stations_list = sorted_by_key(list(stations_dict.items), 1, reverse=True)
+
+    i = N - 1
+    while stations_list[i][1] == stations_list[ i + 1 ][1]:
+        i += 1
+    
+    return stations_list[ : i + 1 ] 

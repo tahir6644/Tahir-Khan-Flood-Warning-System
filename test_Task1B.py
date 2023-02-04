@@ -23,12 +23,7 @@ def test_stations_by_distance():
     test_coord = (no_of_stations + 20, no_of_stations + 20)
     station_ans = stations_by_distance(list_of_stations, test_coord)
     
-    
-    print(station_ans[0][0])
-
     for i in range(no_of_stations - 1, -1, -1):
         assert(station_ans[no_of_stations - 1 -i][0].name == 'name_' + str(i))
         assert(math.isclose(station_ans[i][1] , haversine(station_ans[i][0].coord, test_coord)))
 
-if __name__ == '__main__':
-    test_stations_by_distance()

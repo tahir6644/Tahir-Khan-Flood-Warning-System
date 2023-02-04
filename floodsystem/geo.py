@@ -65,9 +65,8 @@ def stations_by_river(stations : MonitoringStation ) -> dict:
     dictionary = {}
 
     for station in stations:
-        list_of_stations = dictionary.setdefault(station.river, [])
-        dictionary[station.river] = list_of_stations.append(station)
-    
+        dictionary.setdefault(station.river, []).append(station)
+            
     return dictionary
 
     

@@ -85,7 +85,8 @@ def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
     for station in stations:
         stations_dict[station.river] = stations_dict.setdefault(station.river, 0) + 1 
 
-    stations_list = sorted_by_key(list(stations_dict.items), 1, reverse=True)
+    stations_list = list(stations_dict.items())
+    stations_list.sort(key = lambda i:i[1], reverse=True)
 
     i = N - 1
     while stations_list[i][1] == stations_list[ i + 1 ][1]:

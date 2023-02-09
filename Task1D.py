@@ -5,9 +5,15 @@ from floodsystem.stationdata import build_station_list
 def run():
     # Put code here that demonstrates functionality
     
-    rivers_set = rivers_with_station(build_station_list())
-    print(f'There are {len(rivers_set)} rivers with at least one station.\n')
+    rivers_set = sorted(rivers_with_station(build_station_list()))
+    print(f'There are {len(rivers_set)} rivers with at least one station. \n')
+    print(f'The first 10 are {rivers_set[:10]} \n')
+
+    rivers_stations = stations_by_river(build_station_list())
     
+    print(f'The stations on the River Aire are: {sorted(i.name for i in rivers_stations["River Aire"])} \n')
+    print(f'The stations on the River Cam are: {sorted(i.name for i in rivers_stations["River Cam"])} \n')
+    print(f'The stations on the River Thames are: {sorted(i.name for i in rivers_stations["River Thames"])} \n')
 
 
 

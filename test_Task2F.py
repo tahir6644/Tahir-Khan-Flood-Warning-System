@@ -1,11 +1,11 @@
-from floodsystem.plot import plot_water_levels
+from floodsystem.plot import plot_water_level_with_fit
 from floodsystem.station import MonitoringStation
 import datetime
 from dateutil.tz import tzutc
 
 def test_plot_water_levels():
     # Simple graph with 5 points, steadily increasing with a small
-    # horizontal segment.
+    # horizontal segment. Try fitting a polynomial of degree 4.
 
     i = 0
     s_id = 's_id'+ str(i)
@@ -31,7 +31,7 @@ def test_plot_water_levels():
               19
               ]
     
-    plot_water_levels(station_0, dates, levels)
+    plot_water_level_with_fit(station_0, dates, levels, 4)
 
     
 

@@ -14,8 +14,8 @@ def test_relative_water_level():
     t_range = (5, 20)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 15
-    station_0 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_0 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_0.latest_level = 15
     assert(math.isclose(station_0.relative_water_level, 2/3))
 
     i = 1
@@ -27,8 +27,8 @@ def test_relative_water_level():
     t_range = (2, 7)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 2
-    station_1 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_1 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_1.latest_level = 2
     assert(math.isclose(station_1.relative_water_level, 0))
 
     i = 2
@@ -40,8 +40,8 @@ def test_relative_water_level():
     t_range = (3, 12)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 12
-    station_2 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_2 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_2.latest_level = 12
     assert(math.isclose(station_2.relative_water_level, 1))
 
 
@@ -60,8 +60,8 @@ def test_stations_level_over_threshold():
     t_range = (5, 20)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 15
-    station_0 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_0 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_0.latest_level = 15
 
     i = 1
     s_id = 's_id'+ str(i)
@@ -72,8 +72,8 @@ def test_stations_level_over_threshold():
     t_range = (2, 7)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 2
-    station_1 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_1 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_1.latest_level = 2
 
     i = 2
     s_id = 's_id'+ str(i)
@@ -84,8 +84,8 @@ def test_stations_level_over_threshold():
     t_range = (3, 12)
     river = 'river_'+ str(i)
     town = 'town_' + str(i)
-    level = 12
-    station_2 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town, level)
+    station_2 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+    station_2.latest_level = 12
 
     stations = [station_0, station_1, station_2]
     result = stations_level_over_threshold(stations, 0.5)

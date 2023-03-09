@@ -8,7 +8,7 @@ def stations_level_over_threshold(stations: list, tol: float) -> list:
 
     stations_rwl = []
     for station in stations:
-        if station.typical_range_consistent and station.relative_water_level():
+        if station.relative_water_level():
             if station.relative_water_level() > tol:
                 stations_rwl.append((station, station.relative_water_level()))
 
@@ -17,6 +17,23 @@ def stations_level_over_threshold(stations: list, tol: float) -> list:
 
     return stations_rwl
 
+def stations_highest_rel_level(stations: list, N: int) -> list:
+    """
+    Returns a list of the N stations with the highest relative water levels 
+    in descending order.
+    """
+    risky_stations = []
+    
+    # Check for validity first
+    for station in stations:
+        if station.relative_water_level():
+            risky_stations.append(station)
+
+    # Sort by relative water level in descending order.
+    risky_stations.sort(key = lambda i:i.relative_water_level(), reverse=True)
+    # Return first N stations
+    return risky_stations[:N]
+            
 
 
     

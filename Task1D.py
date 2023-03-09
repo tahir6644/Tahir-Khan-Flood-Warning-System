@@ -5,6 +5,7 @@ from floodsystem.stationdata import build_station_list
 def run():
     # Put code here that demonstrates functionality
     
+    # sorted() ensures the river strings are in alphabetical order in the set.
     rivers_set = sorted(rivers_with_station(build_station_list()))
     print(f'There are {len(rivers_set)} rivers with at least one station. \n')
     print(f'The first 10 are {rivers_set[:10]} \n')

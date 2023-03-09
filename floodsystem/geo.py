@@ -43,18 +43,18 @@ def stations_within_radius(stations : list, centre : tuple, r : float) -> list:
     
     return stations_radius
 
-def rivers_with_station(stations : MonitoringStation) -> set:
+def rivers_with_station(stations : list) -> set:
 
     """
     For a given list of station objects, returns a set of rivers 
-    associated with the monitoring station.
+    associated with the stations.
  
     """
 
     stations_rivers = { station.river for station  in stations }
     return stations_rivers
 
-def stations_by_river(stations : MonitoringStation ) -> dict:
+def stations_by_river(stations : list ) -> dict:
 
     """
         For a given list of station objects, returns a dictionary with key:
@@ -71,11 +71,11 @@ def stations_by_river(stations : MonitoringStation ) -> dict:
 
     
 
-def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
+def rivers_by_station_number(stations : list, N : int) -> list:
 
     """
-    Given a list of stations and integer N, it should return a list of N (river. no. of station pairs ) tuples
-    with the maximum number of stations. In case of more rivers with the same number of stations as the nth entry,
+    Given a list of stations and integer N, it should return a list of N (river, no. of stations) tuples
+    with the greatest number of stations. In case of more rivers with the same number of stations as the Nth entry,
     the rivers are included as well in the list.
        
     """
@@ -85,9 +85,15 @@ def rivers_by_station_number(stations : MonitoringStation, N : int) -> list:
     for station in stations:
         stations_dict[station.river] = stations_dict.setdefault(station.river, 0) + 1 
 
+    # List of (river, no. of stations) tuples.
     stations_list = list(stations_dict.items())
+
+    # Sort by no. of stations in descending order.
     stations_list.sort(key = lambda i:i[1], reverse=True)
 
+    # If there are more rivers with the same no. of stations as
+    # the Nth entry (i = N-1 as we start from 0), increase the
+    # no. of tuples included in the final list so that they are included.
     i = N - 1
     while stations_list[i][1] == stations_list[ i + 1 ][1]:
         i += 1

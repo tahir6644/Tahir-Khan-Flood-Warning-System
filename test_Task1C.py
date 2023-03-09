@@ -34,6 +34,11 @@ def test_stations_within_radius( ):
 
     stations_ans = stations_within_radius( list_of_stations, (5.25, 5.25), 500)
 
+    # From the results above, only stations 3-8 are
+    # within the 500 km radius. i goes from 0-5 so 
+    # i+3 goes from 3-8. Note stations_within_radius()
+    # does not sort by distance so the order should just
+    # be from stations 3-8.
     for i in range(6):
         assert(stations_ans[i].name == 'name_'+str(i + 3))
     

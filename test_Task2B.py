@@ -16,7 +16,7 @@ def test_relative_water_level():
     town = 'town_' + str(i)
     station_0 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
     station_0.latest_level = 15
-    assert(math.isclose(station_0.relative_water_level, 2/3))
+    assert(math.isclose(station_0.relative_water_level(), 2/3))
 
     i = 1
     s_id = 's_id'+ str(i)
@@ -29,7 +29,7 @@ def test_relative_water_level():
     town = 'town_' + str(i)
     station_1 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
     station_1.latest_level = 2
-    assert(math.isclose(station_1.relative_water_level, 0))
+    assert(math.isclose(station_1.relative_water_level(), 0))
 
     i = 2
     s_id = 's_id'+ str(i)
@@ -42,7 +42,7 @@ def test_relative_water_level():
     town = 'town_' + str(i)
     station_2 = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
     station_2.latest_level = 12
-    assert(math.isclose(station_2.relative_water_level, 1))
+    assert(math.isclose(station_2.relative_water_level(), 1))
 
 
 def test_stations_level_over_threshold():
@@ -89,8 +89,8 @@ def test_stations_level_over_threshold():
 
     stations = [station_0, station_1, station_2]
     result = stations_level_over_threshold(stations, 0.5)
-    expected_list = [(station_2, station_2.relative_water_level), 
-                     (station_0, station_0.relative_water_level)
+    expected_list = [(station_2, station_2.relative_water_level()), 
+                     (station_0, station_0.relative_water_level())
                      ]
     
     assert(result == expected_list)

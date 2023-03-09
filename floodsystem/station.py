@@ -49,6 +49,30 @@ class MonitoringStation:
         return True if self.typical_range and self.typical_range[0] < self.typical_range[1] else False
 
 
+def build_test_list(no_of_stations = 10):
+    """
+    Builds and returns a list of fake sample station objects for tests.
+    Each fake station is given simple attributes with a number from
+    0-(9) at the end to differentiate between them.
+    """
+
+    list_of_stations = []
+
+    for i in range(no_of_stations):
+        s_id = 's_id'+ str(i)
+        m_id = 'm_id' + str(i)
+        name = 'name_'+ str(i)
+        coord = (i, i)
+        t_range = (i, i)
+        river = 'river_'+ str(i)
+        town = 'town_' + str(i)
+        station = MonitoringStation(s_id, m_id, name, coord, t_range, river, town)
+        list_of_stations.append(station)
+
+    return list_of_stations
+
+
+
 def inconsistent_typical_range_stations(stations : list ) -> list:
 
     """

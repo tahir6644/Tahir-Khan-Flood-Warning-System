@@ -10,10 +10,10 @@ from .utils import sorted_by_key  # noqa
 from haversine import haversine
 from .station import MonitoringStation
 
-def stations_by_distance(stations : MonitoringStation , p : tuple) -> list :
+def stations_by_distance(stations : list , p : tuple) -> list :
     """
-    For a given list of stations and coordinate p, returns
-    a sorted list of station, distance tuple 
+    For a given list of station objects and coordinate p, returns
+    a sorted list of (station, distance) tuples 
     (based on the distance of the station from coordinate p) 
     
     """
@@ -27,7 +27,7 @@ def stations_by_distance(stations : MonitoringStation , p : tuple) -> list :
 
     return station_distance
 
-def stations_within_radius(stations : MonitoringStation, centre : tuple, r : float) -> list:
+def stations_within_radius(stations : list, centre : tuple, r : float) -> list:
 
     """
     For a given list of stations , geographic center and 

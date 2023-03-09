@@ -34,7 +34,7 @@ def plot_water_level_with_fit(station: MonitoringStation, dates: list, levels: l
     Plots the water level data as well as a best-fit polynomial
     of degree p.
     """
-    poly, d0 = polyfit(dates, levels, p)
+    poly, d0, final_slope = polyfit(dates, levels, p)
 
     x = matplotlib.dates.date2num(dates)
     y = levels

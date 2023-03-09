@@ -21,5 +21,9 @@ def polyfit(dates: list, levels: list, p: int) -> tuple:
     # Create a polynomial using the coefficients.
     poly = np.poly1d(p_coeff)
 
-    return (poly, d0)
+    # Find how quickly the water level is currently rising
+    der = np.polyder(poly)
+    final_slope = der(x[-2]-d0)
+
+    return (poly, d0, final_slope)
 

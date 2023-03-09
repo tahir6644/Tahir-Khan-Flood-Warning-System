@@ -69,7 +69,20 @@ def stations_by_river(stations : list ) -> dict:
             
     return dictionary
 
-    
+def stations_by_town(stations: list) -> dict:
+    """
+        For a given list of station objects, returns a dictionary with key:
+        value pairs as town names and list of station object associated with the town.
+
+    """
+
+    dictionary = {}
+
+    for station in stations:
+        dictionary.setdefault(station.town, []).append(station)
+            
+    return dictionary
+
 
 def rivers_by_station_number(stations : list, N : int) -> list:
 
